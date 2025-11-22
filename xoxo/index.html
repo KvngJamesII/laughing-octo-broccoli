@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XOXO - Live Multiplayer TicTacToe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing-page" class="screen active">
+        <div class="container">
+            <h1 class="game-title">XOXO</h1>
+            <p class="game-subtitle">Live Multiplayer TicTacToe</p>
+            <div class="menu-buttons">
+                <button id="play-now-btn" class="neon-button primary">Play Now</button>
+                <div class="join-room-section">
+                    <input type="text" id="room-code-input" placeholder="Enter 5-digit room code" maxlength="5">
+                    <button id="join-room-btn" class="neon-button secondary">Join Room</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Username Entry -->
+    <div id="username-page" class="screen">
+        <div class="container">
+            <h2>Choose Your Username</h2>
+            <div class="username-section">
+                <input type="text" id="username-input" placeholder="Enter username" maxlength="20">
+                <button id="username-submit-btn" class="neon-button primary">Continue</button>
+                <p id="username-error" class="error-message"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Room Lobby -->
+    <div id="lobby-page" class="screen">
+        <div class="container">
+            <h2>Room: <span id="room-code-display"></span></h2>
+            <div class="players-section">
+                <div class="player-card" id="player1-card">
+                    <div class="player-avatar">X</div>
+                    <div class="player-info">
+                        <div class="player-name" id="player1-name">Waiting...</div>
+                        <div class="player-stats" id="player1-stats">XP: 0 | Rank: Newbie</div>
+                    </div>
+                </div>
+                <div class="vs-indicator">VS</div>
+                <div class="player-card" id="player2-card">
+                    <div class="player-avatar">O</div>
+                    <div class="player-info">
+                        <div class="player-name" id="player2-name">Waiting...</div>
+                        <div class="player-stats" id="player2-stats">XP: 0 | Rank: Newbie</div>
+                    </div>
+                </div>
+            </div>
+            <div id="waiting-message" class="waiting-message">
+                <div class="loading-spinner"></div>
+                <p>Waiting for another player to join...</p>
+            </div>
+            <button id="leave-room-btn" class="neon-button secondary">Leave Room</button>
+        </div>
+    </div>
+
+    <!-- Game Page -->
+    <div id="game-page" class="screen">
+        <div class="container">
+            <div class="game-header">
+                <div class="player-info-mini" id="current-player-x">
+                    <span class="player-symbol">X</span>
+                    <span class="player-name-mini" id="player-x-name">Player X</span>
+                </div>
+                <div class="turn-indicator" id="turn-indicator">Your Turn</div>
+                <div class="player-info-mini" id="current-player-o">
+                    <span class="player-symbol">O</span>
+                    <span class="player-name-mini" id="player-o-name">Player O</span>
+                </div>
+            </div>
+            <div class="game-board" id="game-board">
+                <div class="board-cell" data-index="0"></div>
+                <div class="board-cell" data-index="1"></div>
+                <div class="board-cell" data-index="2"></div>
+                <div class="board-cell" data-index="3"></div>
+                <div class="board-cell" data-index="4"></div>
+                <div class="board-cell" data-index="5"></div>
+                <div class="board-cell" data-index="6"></div>
+                <div class="board-cell" data-index="7"></div>
+                <div class="board-cell" data-index="8"></div>
+            </div>
+            <button id="quit-game-btn" class="neon-button secondary">Quit Game</button>
+        </div>
+    </div>
+
+    <!-- Result Modal -->
+    <div id="result-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="result-title">Game Over</h2>
+            <div id="result-message"></div>
+            <div id="xp-change"></div>
+            <div class="modal-buttons">
+                <button id="play-again-btn" class="neon-button primary">Play Again</button>
+                <button id="back-home-btn" class="neon-button secondary">Back to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner large"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Firebase CDN -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    
+    <!-- Game Scripts -->
+    <script src="firebase-config.js"></script>
+    <script src="auth.js"></script>
+    <script src="game.js"></script>
+    <script src="animations.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+

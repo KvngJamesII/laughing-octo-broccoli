@@ -1,0 +1,21 @@
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "usernames": {
+      ".read": true,
+      ".write": "auth != null"
+    },
+    "rooms": {
+      "$roomCode": {
+        ".read": true,
+        ".write": "auth != null"
+      }
+    }
+  }
+}
+
